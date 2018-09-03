@@ -156,58 +156,6 @@ if(ventanaActiva!= null){
                             </a>
                         </li>
                     </ul>
-                    <!--
-                    <li  class= 'menu-dropdown' id="clt">
-                        <a href="#">
-                        <i class="fa fa-fw fa-plus-square"></i>
-                            <span>Otro Menu</span>
-                                <span class="fa arrow">
-                                </span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li  id="tsn">
-                                <a href="op-electronicas/token.php?pag=trns">
-                                   <span class="glyphicon glyphicon-arrow-right"></span> Transferencias
-                                </a>
-                            </li>
-                            <li  id="snt">
-                                <a href="op-electronicas/token.php?pag=terc">
-                                    <span class="glyphicon glyphicon-circle-arrow-right"></span> Transf. a otros bancos
-                                </a>
-                            </li>
-                            <li  id="snt">
-                                <a href="#">
-                                    <i class="fa fa-fw fa-plus"></i> Transf. al exterior
-                                </a>
-                            </li>
-                            <li  id="ppm">
-                                <a href="op-electronicas/pago-prestamo.php?va=ppm">
-                                    <i class="fa fa-fw fa-pencil-square-o"></i>Pago de Préstamo
-                                </a>
-                            </li>
-                            <li  id="ptj">
-                                <a href="op-electronicas/pago-tarjeta.php?va=ptj">
-                                    <i class="fa fa-fw fa-credit-card"></i> Pago de tarjeta
-                                </a>
-                            </li>
-                            <li  id="psv">
-                                <a href="op-electronicas/pago-servicio.php?va=psv">
-                                    <i class="fa fa-fw fa-shopping-cart"></i> Pago Servicios
-                                </a>
-                            </li>
-                            <li  id="hsv">
-                                <a href="op-electronicas/historial-servicios.php?va=hsv">
-                                    <i class="fa fa-fw fa-archive"></i> Historial de servicios
-                                </a>
-                            </li>
-                            <li  id="scr">
-                                <a href="op-electronicas/chequera.php?va=scr">
-                                    <i class="fa fa-fw fa-plus-square"></i> Solicitar Chequera
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    --> 
                         </ul>
                     </li>                 
                 </ul>

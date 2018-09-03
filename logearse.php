@@ -23,7 +23,7 @@ $_SESSION['valori'] = 1;
 </head>
 <body>
 <div class="preloader">
-    <div class="loader_img"><img src="img/loading.gif" alt="loading..." height="64" width="64"></div>
+    <div class="loader_img"><img src="img/loader.gif" alt="loading..." height="64" width="64"></div>
 </div>
 
 <div class="container">

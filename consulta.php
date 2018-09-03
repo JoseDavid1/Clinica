@@ -48,7 +48,7 @@ $array = mysqli_fetch_array($runDatos);
 <body class="skin-coreplus">
    
 <div class="preloader">
-    <div class="loader_img"><img src="img/loading.gif" alt="loading..." height="64" width="64"></div>
+    <div class="loader_img"><img src="img/loader.gif" alt="loading..." height="64" width="64"></div>
 </div>
 <!-- header logo: style can be found in header-->
 <?php include("menu/menu-principal.php"); ?>
