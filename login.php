@@ -5,7 +5,7 @@ include('conexion.php');
 
 function verificar_login($user,$contrasena,&$result) {
     $sql = 
-    "SELECT * FROM usuarios WHERE Usuario = '".$user."' and Password = password('".$contrasena."')";
+    "SELECT * FROM usuarios WHERE Usuario like binary '".$user."' and Password = password('".$contrasena."')";
     $rec = $result->query($sql);
     $count = 0;
      
@@ -34,19 +34,27 @@ try{
 
 if(!isset($_SESSION['userid'])) 
 { 
-    echo "existe id";
     if(isset($_POST['user'])) 
     { 
-    echo "existe user";
     $valor = verificar_login($_POST['user'],$_POST['contrasena'],$conexion);
-    echo $valor;
         if($valor == 1) 
         {
             header("location:index.php?va=sig"); 
         }
         else
         {
-            //Mensaje de error.
+            ?>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title></title>
+            </head>
+            <body>
+            <script language="javascript">alert('Mensaje de error');</script>
+            
+            </body>
+            </html>
+            <?php
         }
     
     }
