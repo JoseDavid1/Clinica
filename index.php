@@ -7,7 +7,6 @@ session_start();
 error_reporting(0);
 include_once('conexion.php');
 
-
 $i = 1;
 
 if($_POST){
@@ -30,19 +29,17 @@ if(empty($busqueda) or empty($busqueda2)){
     $array = mysqli_fetch_array($rec);
     $i = $i + 1;
     $_SESSION['pacienteActivo'] = $array['idPaciente'];
-
 }
 }
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Clínica Médica</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="shortcut icon" href="img/icon.ico"/>
+    <link rel="shortcut icon" href="img/icono.ico"/>
     <link type="text/css" rel="stylesheet" href="css/app.css"/>
     <!-- end of global css -->
     <!--page level css -->
@@ -53,7 +50,6 @@ if(empty($busqueda) or empty($busqueda2)){
     <link rel="stylesheet" type="text/css" href="vendors/awesomebootstrapcheckbox/css/awesome-bootstrap-checkbox.css">
     <link href="vendors/bower-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css">
-
     <link href="css/custom_css/dashboard1.css" rel="stylesheet" type="text/css"/>
     <!--end of page level css-->
 </head>
@@ -87,7 +83,7 @@ if(empty($busqueda) or empty($busqueda2)){
             <div class="row">
                 <div class="col-md-16">
                     <div class="row tiles-row">
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 tile-bottom">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 tile-bottom">
                             <div class="widget" data-count=".num" data-from="0"
                                          data-to="512" data-duration="1">
                                 <div class="canvas-interactive-wrapper1">
@@ -95,7 +91,7 @@ if(empty($busqueda) or empty($busqueda2)){
                                     <div class="cta-wrapper1">
                                         <div class="item">
                                         <div class="widget-icon pull-left icon-color animation-fadeIn">
-                                                <span class="glyphicon glyphicon-book"></span>
+                                               <i class="fa fa-fw fa-male"></i>
                                             </div>
                                         </div>
                                         <div class="widget-count panel-white">
@@ -103,14 +99,14 @@ if(empty($busqueda) or empty($busqueda2)){
                                                 <div id="count-box1" class="count-box">
                                                     <?php print_r($saldoAhorro['0']); ?>
                                                 </div>
-                                                <span class="title">Espacio Disponible</span>
+                                                <span class="title">Personas en espera</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 tile-bottom">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 tile-bottom">
                             <div class="widget" data-count=".num" data-from="0"
                                  data-to="512" data-duration="2">
                                 <div class="canvas-interactive-wrapper2">
@@ -118,7 +114,8 @@ if(empty($busqueda) or empty($busqueda2)){
                                     <div class="cta-wrapper2">
                                         <div class="item">
                                             <div class="widget-icon pull-left icon-color animation-fadeIn">
-                                               <i class="fa fa-fw fa-money"></i>
+                                               
+                                               <i class="fa fa-fw fa-check-square-o"></i>
                                             </div>
                                         </div>
                                         <div class="widget-count panel-white">
@@ -126,14 +123,14 @@ if(empty($busqueda) or empty($busqueda2)){
                                                 <div id="count-box2" class="count-box">
                                                     <?php print_r($ejectVYS['0']); ?>
                                                 </div>
-                                                <span class="title">Espacio Disponible</span>
+                                                <span class="title">Consultas en el día</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 tile-bottom">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 tile-bottom">
                             <div class="widget" data-suffix="k" data-count=".num"
                                  data-from="0" data-to="310" data-duration="4" data-easing="false">
                                 <div class="canvas-interactive-wrapper3">
@@ -141,7 +138,7 @@ if(empty($busqueda) or empty($busqueda2)){
                                     <div class="cta-wrapper3">
                                         <div class="item">
                                             <div class="widget-icon pull-left icon-color animation-fadeIn">
-                                                <i class="fa fa-fw fa-usd fa-size"></i>
+                                                <i class="fa fa-fw fa-check-square"></i>
                                             </div>
                                         </div>
                                         <div class="widget-count panel-white">
@@ -151,15 +148,14 @@ if(empty($busqueda) or empty($busqueda2)){
                                                     include_once('cambio.php');
                                                     printf($dato); */?>
                                                 </div>
-                                                <span class="title">Espacio Disponible</span>
+                                                <span class="title">Consultas en el mes</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 tile-bottom">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 tile-bottom">
                             <div class="widget" data-count=".num" data-from="0"
                                  data-to="512" data-duration="3">
                                 <div class="canvas-interactive-wrapper4">
@@ -184,7 +180,6 @@ if(empty($busqueda) or empty($busqueda2)){
                                 </div>
                             </div>
                         </div>
-                        -->
                         <!--
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 tile-bottom">
                             <div class="widget" data-count=".num" data-from="0"

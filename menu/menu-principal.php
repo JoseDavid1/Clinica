@@ -128,7 +128,7 @@ if(ventanaActiva!= null){
                             </li>
                             <li  id="ptl">
                                 <a href="paciente/patientList.php?va=ptl">
-                                    <i class="fa fa-fw fa-book"></i> Listado de Pacientes
+                                    <i class="fa fa-fw fa-archive"></i> Listado de Pacientes
                                 </a>
                             </li>
                         </ul>
@@ -139,6 +139,14 @@ if(ventanaActiva!= null){
                                     <i class="fa fa-fw fa-folder-open"></i> Historial de Paciente
                                 </a>
                         </li>   
+                    </ul>    
+                    <ul class="sub-menu">
+                        <li id="rcd">
+                            <a href="record.php?va=rcd">
+                                <i class="fa fa-fw fa-files-o"></i>
+                                <span class="mm-text ">Antecedentes</span>
+                            </a>
+                        </li>
                     </ul>    
                     <ul class="sub-menu">
                         <li id="cnt">

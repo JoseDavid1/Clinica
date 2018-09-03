@@ -11,6 +11,16 @@ $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacien
 $runDatos = mysqli_query($conexion, $datosPaciente);
 $array = mysqli_fetch_array($runDatos);
 
+if (!isset($_SESSION['pacienteActivo'])) {
+
+}else{
+
+$traerAntedecentes = "SELECT * FROM antecedentes 
+					WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";
+$runQuery = mysqli_query($conexion, $traerAntedecentes);
+$arrayAntecedentes = mysqli_fetch_array($runQuery);
+
+}
 
  ?>
 <!DOCTYPE html>
@@ -58,7 +68,7 @@ $array = mysqli_fetch_array($runDatos);
         <section class="content-header">
             <!--section starts-->
             <h1>
-                Crear Nueva Consulta
+                Consultar Antecedentes
             </h1>
             <ol class="breadcrumb">
                 <li>
@@ -69,7 +79,7 @@ $array = mysqli_fetch_array($runDatos);
                 <li>
                 </li>
                 <li class="active">
-                    Consulta
+                    Antecedentes
                 </li>
             </ol>
         </section>
@@ -86,7 +96,7 @@ $array = mysqli_fetch_array($runDatos);
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                                 <div class="form-group">
-                                    <label for="input-text" class="col-sm-2 control-label">Nombres del Paciente: </label>
+                                    <label for="input-text" class="col-sm-2 control-label">Nombres del  Paciente: </label>
                                     <div class="col-sm-4">
                                         <input type="text" name="nombrePaciente" class="form-control" id="input-text"
                                                value="<?php if($i == 1){print_r("");}else{print_r($array['1']);} ?> " >
@@ -110,63 +120,75 @@ $array = mysqli_fetch_array($runDatos);
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="glyphicon glyphicon-check"></i> Datos de Consulta 
+                                <i class="glyphicon glyphicon-check"></i> Antecedentes del Paciente 
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="ingresarIva.php" method="POST" enctype="multipart/form-data">
+                            <form class="form-horizontal" role="form" action="prueba.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
-                                        <label for="input-text" class="col-sm-3 control-label">
-                                            Fecha de   <br>
-                                            Consulta:
-                                        </label>
-                                        <div class="input-group col-sm-5">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-fw fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control" id="departure" name="present" placeholder="DD/MM/YYYY"/>
-                                        </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="input-text" class="col-sm-3 control-label" >Motivo de Consulta: </label>
+                                    <label for="input-text" class="col-sm-3 control-label" >Medicos: </label>
                                     <div class="col-sm-6">
-                                       <textarea  name="motivoConsulta"
+                                       <textarea  name="medicos"
                                           class="form-control resize_vertical"
-                                          placeholder="Ingrese el motivo de la visita"></textarea>
+                                          placeholder="Antecedentes Medicos"><?php print_r($arrayAntecedentes['1']);?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-text" class="col-sm-3 control-label" >Historia: </label>
+                                    <label for="input-text" class="col-sm-3 control-label" >Quirurgicos: </label>
                                     <div class="col-sm-6">
-                                       <textarea  name="historiaConsulta"
+                                       <textarea  name="quirurgicos"
                                           class="form-control resize_vertical"
-                                          placeholder="Ingrese Historia de la enfermedad"></textarea>
+                                          placeholder="Antecedentes Quirurgicos"><?php print_r($arrayAntecedentes['2']);?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-text" class="col-sm-3 control-label">Diagnostico</label>
+                                    <label for="input-text" class="col-sm-3 control-label">Traumaticos:</label>
                                     <div class="col-sm-6">
-                                        <input type="text" name="diagnostico" class="form-control" id="input-text"
-                                               placeholder="Diagnostico de la consulta">
+                                       <textarea  name="traumaticos"
+                                          class="form-control resize_vertical"
+                                          placeholder="Antecedentes Traumaticos"><?php print_r($arrayAntecedentes['3']);?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-text" class="col-sm-3 control-label" >Tratamiento Recomendado: </label>
+                                    <label for="input-text" class="col-sm-3 control-label">Familiares:</label>
                                     <div class="col-sm-6">
-                                       <textarea  name="tratamiento"
+                                       <textarea  name="familiares"
                                           class="form-control resize_vertical"
-                                          ></textarea>
+                                          placeholder="Antecedentes Familiares"><?php print_r($arrayAntecedentes['4']);?></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">Ginecologicos:</label>
+                                    <div class="col-sm-6">
+                                       <textarea  name="ginecologicos"
+                                          class="form-control resize_vertical"
+                                          placeholder="Antecedentes Ginecologicos">
+                                       <?php print_r($arrayAntecedentes['5']);?></textarea>
+                                    </div>
+                                </div>
+	                            <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">Nacimiento:</label>
+                                    <div class="col-sm-6">
+                                       <textarea  name="nacimiento"
+                                          class="form-control resize_vertical"
+                                          placeholder="Antecedentes de Nacimiento">
+                                          <?php print_r($arrayAntecedentes['6']);?></textarea>
                                     </div>
                                 </div>
                             <br>
-                            <div class="col-md-12">
-                                <div class="col-xs-5 col-md-3">
-                                    <input type="reset" value="Borrar Consuta"
+                            <div class="col-md-16	">
+                                <div class="col-xs-4 col-md-3">
+                                    <input type="reset" value="Borrar"
                                            class="btn btn-danger btn-block btn-md btn-responsive">
                                 </div>
-                                <div class="col-xs-5 col-md-3 col-md-offset-3">
-                                    <input type="submit" id="btncheck1" value="Generar Receta"
+                                <div class="col-xs-4 col-md-3 col-md-offset-3">
+                                    <input type="submit" name="btncheck1" value="Guardar"
                                            class="btn btn-primary btn-block btn-md btn-responsive"
+                                           tabindex="7">
+                                </div>
+                                <div class="col-xs-4 col-md-3">
+                                    <input type="submit" name="btncheck2" value="Actualizar"
+                                           class="btn btn-success btn-block btn-md btn-responsive"
                                            tabindex="7">
                                 </div>
                             </div>

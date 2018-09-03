@@ -11,6 +11,7 @@ else{
 $query = "SELECT * FROM paciente";
 $patientList = mysqli_query($conexion, $query);
 
+
 }
 ?>
 
@@ -21,7 +22,7 @@ $patientList = mysqli_query($conexion, $query);
     <meta charset="UTF-8">
     <title>Listado de Pacientes </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" href="../img/icono.ico"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -32,16 +33,10 @@ $patientList = mysqli_query($conexion, $query);
     <link type="text/css" rel="stylesheet" href="../css/app.css"/>
     <!-- end of global css -->
     <!--page level css -->
-    <link rel="stylesheet" type="text/css" href="../vendors/datatables/css/buttons.bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../vendors/datatables/css/colReorder.bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../vendors/datatables/css/dataTables.bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../vendors/datatables/css/rowReorder.bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../vendors/datatables/css/buttons.bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../vendors/datatables/css/scroller.bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../vendors/datatablesmark.js/css/datatables.mark.min.css"/>
+    <link rel="stylesheet" href="../vendors/bootstrap-table/css/bootstrap-table.min.css">    
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
 
-    <link rel="stylesheet" type="text/css" href="../css/custom_css/responsive_datatables.css">
+    <link rel="stylesheet" type="text/css" href="../css/custom_css/bootstrap_tables.css">
     <!--end of page level css-->
 </head>
 
@@ -73,35 +68,39 @@ $patientList = mysqli_query($conexion, $query);
         <section class="content">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-success filterable">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="fa fa-fw fa-align-justify"></i> Horizontal Scroll
+                                <i class="fa fa-fw fa-th-large"></i> Listado de Pacientes
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <table class="table horizontal_table table-striped" id="table1">
+                            <table id="table4" data-toolbar="#toolbar" data-search="true" data-show-refresh="false"
+                                    data-show-columns="true" data-show-export="true"
+                                    data-detail-formatter="detailFormatter"
+                                   data-minimum-count-columns="2" data-show-pagination-switch="true"
+                                   data-pagination="true" data-id-field="id" data-page-list="[10, 20,40,ALL]"
+                                   data-show-footer="false" data-height="503">
                                 <thead>
                                 <tr>
-                                    <th>Nombres</th>
-                                    <th>Apellidos</th>
-                                    <th>Edad</th>
-                                    <th>Genero</th>
-                                    <th>Estado Civil</th>
-                                    <th>Religión</th>
-                                    <th>Teléfono</th>
-                                    <th>Originario</th>
-                                    <th>Reside</th>
-                                    <th>Fecha de Nacimiento</th>
-                                    <th>Direccion</th>
-                                    
+                                    <th data-field="nombre" data-sortable="true">Nombres </th>
+                                    <th data-field="apellido" data-sortable="true">Apellidos</th>
+                                    <th data-field="edad" data-sortable="true">Edad</th>
+                                    <th data-field="genero" data-sortable="true">Genero</th>
+                                    <th data-field="estado civil" data-sortable="true">Estado Civil</th>
+                                    <th data-field="religion" data-sortable="true">Religión</th>
+                                    <th data-field="telefono" data-sortable="true">Teléfono</th>
+                                    <th data-field="originario" data-sortable="true">Originario</th>
+                                    <th data-field="reside" data-sortable="true">Residente</th>
+                                    <th data-field="naci" data-sortable="true">Fecha de Nacimiento</th>
+                                    <th data-field="direccion" data-sortable="true">Direccion</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                            <?php 
+                                <?php 
                                 while($row = mysqli_fetch_array($patientList)){
                                  ?>
-                                 <tr>
+                                <tr>
                                     <td><?php print_r($row[1]);?></td>
                                     <td><?php print_r($row[2]);?></td>
                                     <td><?php
@@ -110,7 +109,6 @@ $patientList = mysqli_query($conexion, $query);
                                         $anios = $hoy - $antes;
                                         print_r($anios);     
                                         ?></td>
-
                                     <td><?php print_r($row[3]);?></td>
                                     <td><?php print_r($row[5]);?></td>
                                     <td><?php print_r($row[6]);?></td>
@@ -119,12 +117,9 @@ $patientList = mysqli_query($conexion, $query);
                                     <td><?php print_r($row[9]);?></td>
                                     <td><?php print_r($row[10]);?></td>
                                     <td><?php print_r($row[4]);?></td>
-
                                 </tr>
-
-                            <?php }       
+                                <?php }       
                                  ?>
-                                
                                 </tbody>
                             </table>
                         </div>
@@ -140,21 +135,10 @@ $patientList = mysqli_query($conexion, $query);
 <script src="../js/app.js" type="text/javascript"></script>
 <!-- end of global js -->
 <!-- begining of page level js -->
-<script type="text/javascript" src="../vendors/datatables/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/dataTables.bootstrap.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/dataTables.buttons.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/dataTables.colReorder.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/dataTables.responsive.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/dataTables.rowReorder.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/buttons.colVis.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/buttons.html5.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/buttons.print.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/buttons.bootstrap.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/buttons.print.js"></script>
-<script type="text/javascript" src="../vendors/datatables/js/dataTables.scroller.js"></script>
-<script src="../vendors/mark.js/jquery.mark.js" charset="UTF-8"></script>
-<script src="../vendors/datatablesmark.js/js/datatables.mark.min.js" charset="UTF-8"></script>
-<script src="../js/custom_js/responsive_datatables.js" type="text/javascript"></script>
+<script type="text/javascript" src="../vendors/editable-table/js/mindmup-editabletable.js"></script>
+<script type="text/javascript" src="../vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../vendors/tableExport.jquery.plugin/tableExport.min.js"></script>
+<script src="../js/custom_js/bootstrap_tables.js" type="text/javascript"></script>
 <!-- end of page level js -->
 </body>
 

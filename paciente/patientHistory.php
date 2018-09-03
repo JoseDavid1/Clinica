@@ -11,6 +11,9 @@ $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacien
 $runDatos = mysqli_query($conexion, $datosPaciente);
 $array = mysqli_fetch_array($runDatos);
 
+$historialPaciente = "SELECT * FROM consulta 
+                    WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";
+$runHistorial = mysqli_query($conexion, $historialPaciente);
 
 
 ?>
@@ -70,14 +73,14 @@ $array = mysqli_fetch_array($runDatos);
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                                 <div class="form-group">
-                                    <label for="input-text" class="col-sm-2 control-label">Nombres Paciente: </label>
-                                    <div class="col-sm-3">
+                                    <label for="input-text" class="col-sm-2 control-label">Nombres del Paciente: </label>
+                                    <div class="col-sm-4">
                                         <input type="text" name="nombrePaciente" class="form-control" id="input-text"
                                                value="<?php if($i == 1){print_r("");}else{print_r($array['1']);} ?> " >
                                     </div>
                                 
-                                    <label for="input-text" class="col-sm-2 control-label">Apellidos Paciente:</label>
-                                    <div class="col-sm-3">
+                                    <label for="input-text" class="col-sm-2 control-label">Apellidos del Paciente:</label>
+                                    <div class="col-sm-4">
                                         <input type="text" name="apellidoPaciente" class="form-control" id="input-text"
                                                value="<?php if($i ==1 ){}else{ print_r($array['2']);} ?>">
                                     </div>
@@ -109,7 +112,7 @@ $array = mysqli_fetch_array($runDatos);
                                 </thead>
                                 <tbody>
                                 <?php
-                                while ($array = mysqli_fetch_array($datospaciente)) {
+                                while ($array = mysqli_fetch_array($runHistorial)) {
                                  		
                                  	?> 	
                                 <tr>
