@@ -162,8 +162,7 @@ $arrayAntecedentes = mysqli_fetch_array($runQuery);
                                     <div class="col-sm-6">
                                        <textarea  name="ginecologicos"
                                           class="form-control resize_vertical"
-                                          placeholder="Antecedentes Ginecologicos">
-                                       <?php print_r($arrayAntecedentes['5']);?></textarea>
+                                          placeholder="Antecedentes Ginecologicos"><?php print_r($arrayAntecedentes['5']);?></textarea>
                                     </div>
                                 </div>
 	                            <div class="form-group">
@@ -171,8 +170,7 @@ $arrayAntecedentes = mysqli_fetch_array($runQuery);
                                     <div class="col-sm-6">
                                        <textarea  name="nacimiento"
                                           class="form-control resize_vertical"
-                                          placeholder="Antecedentes de Nacimiento">
-                                          <?php print_r($arrayAntecedentes['6']);?></textarea>
+                                          placeholder="Antecedentes de Nacimiento"><?php print_r($arrayAntecedentes['6']);?></textarea>
                                     </div>
                                 </div>
                             <br>
