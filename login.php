@@ -56,7 +56,7 @@ if(!isset($_SESSION['userid']))
         swal({
   title: "Datos incorrectos!",
   text: "Por favor, verifique su usuario y contraseña",
-  icon: "warning",
+  icon: "error",
 })
 .then((value) => {
    location.href="logearse.php";
