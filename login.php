@@ -45,15 +45,26 @@ if(!isset($_SESSION['userid']))
         {
             ?>
             <!DOCTYPE html>
-            <html>
-            <head>
-                <title></title>
-            </head>
-            <body>
-            <script language="javascript">alert('Mensaje de error');</script>
-            
-            </body>
-            </html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="vendors/sweetalert2/js/sweetalert.min.js"></script>
+
+</head>
+<body>
+    <script type="text/javascript">
+        swal({
+  title: "Datos incorrectos!",
+  text: "Por favor, verifique su usuario y contraseña",
+  icon: "warning",
+})
+.then((value) => {
+   location.href="logearse.php";
+});
+    </script>
+
+</body>
+</html>
             <?php
         }
     
