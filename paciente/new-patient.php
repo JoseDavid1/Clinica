@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if (!isset($_SESSION['userid'])) {
+    header("Location: ../index.php?va=sig");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -103,11 +109,11 @@
 	                                <div class="form-group">
 	                                    <label class="control-label col-md-3 m-t-10">Fecha de Nacimiento:</label>
 	                                    <div class="input-group">
-	            <div class="input-group-addon">
-	                <i class="fa fa-fw fa-calendar"></i>
-	            </div>
-	            <input type="text" class="form-control" name="departure" placeholder="DD/MM/YYYY"/>
-	        </div>
+								            <div class="input-group-addon">
+								                <i class="fa fa-fw fa-calendar"></i>
+								            </div>
+								            <input type="text" class="form-control" name="departure" placeholder="DD/MM/YYYY"/>
+								        </div>
 	                                </div>
 	                            </div>
 	                            <div class="col-md-6">
@@ -116,10 +122,10 @@
 	                                    <div class="col-md-5 m-t-10">
 	                                        <select class="form-control" name="estadocivil">
 	                                            <option>Seleccione uno</option>
-	                                            <option>Soltero/a</option>
-	                                            <option>Casado/a</option>
-	                                            <option>Divorciado/a</option>
-	                                            <option>Viudo/a</option>
+	                                            <option>Soltero</option>
+	                                            <option>Casado</option>
+	                                            <option>Divorciado</option>
+	                                            <option>Viudo</option>
 	                                        </select>
 	                                    </div>
 	                                </div>
