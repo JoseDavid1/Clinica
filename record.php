@@ -3,7 +3,6 @@ session_start();
 error_reporting(0);
 include("conexion.php");
 if(!isset($_SESSION['userid'])){
-
     header("Location:logearse.php");
 }
 
@@ -21,6 +20,10 @@ $runQuery = mysqli_query($conexion, $traerAntedecentes);
 $arrayAntecedentes = mysqli_fetch_array($runQuery);
 
 }
+$consultar = "SELECT * FROM antecedentes 
+                    WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";
+    $runConsulta = mysqli_query($conexion, $consultar);
+    $arrayConsulta = mysqli_fetch_array($runConsulta);
 
  ?>
 <!DOCTYPE html>
@@ -94,7 +97,7 @@ $arrayAntecedentes = mysqli_fetch_array($runQuery);
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                            <form class="form-horizontal" role="form"  method="POST">
                                 <div class="form-group">
                                     <label for="input-text" class="col-sm-2 control-label">Nombres del  Paciente: </label>
                                     <div class="col-sm-4">
@@ -124,7 +127,7 @@ $arrayAntecedentes = mysqli_fetch_array($runQuery);
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="prueba.php" method="POST" enctype="multipart/form-data">
+                            <form class="form-horizontal" role="form" action="paciente/updateRecord.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="input-text" class="col-sm-3 control-label" >Medicos: </label>
                                     <div class="col-sm-6">
@@ -168,7 +171,7 @@ $arrayAntecedentes = mysqli_fetch_array($runQuery);
 	                            <div class="form-group">
                                     <label for="input-text" class="col-sm-3 control-label">Nacimiento:</label>
                                     <div class="col-sm-6">
-                                       <textarea  name="nacimiento"
+                                       <textarea  id='d' name="nacimiento"
                                           class="form-control resize_vertical"
                                           placeholder="Antecedentes de Nacimiento"><?php print_r($arrayAntecedentes['6']);?></textarea>
                                     </div>
@@ -179,15 +182,32 @@ $arrayAntecedentes = mysqli_fetch_array($runQuery);
                                     <input type="reset" value="Borrar"
                                            class="btn btn-danger btn-block btn-md btn-responsive">
                                 </div>
-                                <div class="col-xs-4 col-md-3 col-md-offset-3">
-                                    <input type="submit" name="btncheck1" value="Guardar"
-                                           class="btn btn-primary btn-block btn-md btn-responsive"
-                                           tabindex="7">
-                                </div>
-                                <div class="col-xs-4 col-md-3">
-                                    <input type="submit" name="btncheck2" value="Actualizar"
-                                           class="btn btn-success btn-block btn-md btn-responsive"
-                                           tabindex="7">
+                                <?php
+                                    if ($arrayConsulta == NULL) {
+                                        echo "<div class='col-xs-4 col-md-3 col-md-offset-3'>
+                                    <input type='submit' name='btncheck1' value='Guardar'
+                                           class='btn btn-primary btn-block btn-md btn-responsive'
+                                           tabindex='7' >
+                                </div>";
+                                    }else{
+                                        echo "<div class='col-xs-4 col-md-3 col-md-offset-3'>
+                                    <input type='submit' name='btncheck1' value='Guardar'
+                                           class='btn btn-primary btn-block btn-md btn-responsive'
+                                           tabindex='7'disabled>
+                                </div>";
+                                    }
+                                    if ($arrayConsulta != NULL) {
+                                        echo "<div class='col-xs-4 col-md-3'>
+                                    <input type='submit' name='btncheck1' value='Actualizar'
+                                           class='btn btn-success btn-block btn-md btn-responsive'
+                                           tabindex='7'>";
+                                    }else{
+                                        echo "<div class='col-xs-4 col-md-3'>
+                                    <input type='submit' name='btncheck1' value='Actualizar'
+                                           class='btn btn-success btn-block btn-md btn-responsive'
+                                           tabindex='7' disabled>";
+                                    }
+                                ?>
                                 </div>
                             </div>
                             </form>
