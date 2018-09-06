@@ -1,4 +1,5 @@
 <?php 
+//se inicia la variable de sesión
 session_start();
 error_reporting(0);
 include("conexion.php");
@@ -6,6 +7,7 @@ if(!isset($_SESSION['userid'])){
     header("Location:logearse.php");
 }
 
+//consulta para obtener los datos del paciente
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runDatos = mysqli_query($conexion, $datosPaciente);
 $array = mysqli_fetch_array($runDatos);
@@ -14,12 +16,14 @@ if (!isset($_SESSION['pacienteActivo'])) {
 
 }else{
 
+    //consulta para verificar "consultas" por paciente
 $traerAntedecentes = "SELECT * FROM antecedentes 
 					WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runQuery = mysqli_query($conexion, $traerAntedecentes);
 $arrayAntecedentes = mysqli_fetch_array($runQuery);
 
 }
+//consulta para los antecedentes por paciente
 $consultar = "SELECT * FROM antecedentes 
                     WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";
     $runConsulta = mysqli_query($conexion, $consultar);

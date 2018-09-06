@@ -1,4 +1,5 @@
 <?php 
+//se crea una variable de sesión
  session_start();
 $_SESSION['valori'] = 1;
 

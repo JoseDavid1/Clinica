@@ -1,9 +1,12 @@
 <?php 
-
+//se inicializa la variable de sesión
 session_start();
 include('conexion.php');
 
+//funcion para verificar las credenciales
 function verificar_login($user,$contrasena,&$result) {
+
+    //consulta para verificar el usuario y la contraseña
     $sql = 
     "SELECT * FROM usuarios WHERE Usuario like binary '".$user."' and Password = password('".$contrasena."')";
     $rec = $result->query($sql);
@@ -32,13 +35,17 @@ function verificar_login($user,$contrasena,&$result) {
 
 try{
 
+
+//se verifican las credenciales    
 if(!isset($_SESSION['userid'])) 
 { 
     if(isset($_POST['user'])) 
     { 
+        //se utiliza la función, y se mandan los parámetros
     $valor = verificar_login($_POST['user'],$_POST['contrasena'],$conexion);
         if($valor == 1) 
         {
+            //se redirige al index
             header("location:index.php?va=sig"); 
         }
         else
@@ -54,6 +61,7 @@ if(!isset($_SESSION['userid']))
 <body>
     <script type="text/javascript">
         swal({
+            //se muestra mensaje de error
   title: "Datos incorrectos!",
   text: "Por favor, verifique su usuario y contraseña",
   icon: "error",

@@ -1,27 +1,35 @@
 <?php
+//se declara el inicio de sesión
 session_start();
+error_reporting(0);
  if(!isset($_SESSION['userid'])) 
 {
+    //se redirige al index
     header("location:index.php");
 }
-error_reporting(0);
 include_once('conexion.php');
 
 $i = 1;
 
 if($_POST){
 
+//Consulta para una "consulta medica"
 $traerDatos = "SELECT fechaConsulta, Diagnostico, TratamientoRecomendado FROM Consulta
                     WHERE Paciente_idPaciente = '".$array['0']."' ";
 $datospaciente = mysqli_query($conexion, $traerDatos);
 
+//Se obtiene el nombre del paciente
 $busqueda = trim($_POST['nombrePaciente']);
+
+//se obtiene el apellido del paciente 
 $busqueda2 = trim($_POST['apellidoPaciente']);
 
+//se verifica que el nombre y el apellido no estén vacios
 if(empty($busqueda) or empty($busqueda2)){    
 
 }else{
 
+    //consulta que devuelve los datos datos del paciente 
     $sql = "SELECT idPaciente, Nombre, Apellido FROM paciente
             WHERE Nombre like '%".$_POST['nombrePaciente']."%'
             AND Apellido like  '%".$_POST['apellidoPaciente']."%';";

@@ -1,5 +1,5 @@
 <?php 
-
+//definición de credenciales de la BD
 define('DB_SERVER','localhost');
 define('DB_NAME','clinica');
 define('DB_USER','root');

@@ -1,13 +1,12 @@
 <?php
 session_start();
+error_reporting(0);
  if(!isset($_SESSION['userid'])) 
 {
     header("location:../logearse.php");
 }
-error_reporting(0);
-
-
 ?>
+
 <script src="../jquery-3.2.1.min.js"></script>
  <script>
     function getQueryVariable(variable) {

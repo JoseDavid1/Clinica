@@ -1,4 +1,5 @@
 <?php 
+//se verifica que exista una sesión iniciada
 session_start();
 error_reporting(0);
 include("conexion.php");
@@ -6,7 +7,7 @@ if(!isset($_SESSION['userid'])){
 
     header("Location:logearse.php");
 }
-
+//consulta que devuelve los datos del paciente
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runDatos = mysqli_query($conexion, $datosPaciente);
 $array = mysqli_fetch_array($runDatos);
