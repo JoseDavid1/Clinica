@@ -104,10 +104,10 @@ $patientList = mysqli_query($conexion, $query);
                                     <td><?php print_r($row[1]);?></td>
                                     <td><?php print_r($row[2]);?></td>
                                     <td><?php
-                                        $antes = $row[10];
+                                        $fecha = explode("/", $row[10]);
                                         $hoy = date(Y);
-                                        $anios = $hoy - $antes;
-                                        print_r($anios);     
+                                        $anios = $hoy - $fecha['2'];
+                                        print_r($anios);      
                                         ?></td>
                                     <td><?php print_r($row[3]);?></td>
                                     <td><?php print_r($row[5]);?></td>
