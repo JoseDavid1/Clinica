@@ -1,43 +1,21 @@
 <?php
-//se declara el inicio de sesión
 session_start();
-error_reporting(0);
  if(!isset($_SESSION['userid'])) 
 {
-    //se redirige al index
     header("location:index.php");
 }
+error_reporting(0);
 include_once('conexion.php');
 
-$i = 1;
-
-if($_POST){
-
-//Consulta para una "consulta medica"
-$traerDatos = "SELECT fechaConsulta, Diagnostico, TratamientoRecomendado FROM Consulta
-                    WHERE Paciente_idPaciente = '".$array['0']."' ";
-$datospaciente = mysqli_query($conexion, $traerDatos);
-
-//Se obtiene el nombre del paciente
-$busqueda = trim($_POST['nombrePaciente']);
-
-//se obtiene el apellido del paciente 
-$busqueda2 = trim($_POST['apellidoPaciente']);
-
-//se verifica que el nombre y el apellido no estén vacios
-if(empty($busqueda) or empty($busqueda2)){    
-
-}else{
-
-    //consulta que devuelve los datos datos del paciente 
-    $sql = "SELECT idPaciente, Nombre, Apellido FROM paciente
-            WHERE Nombre like '%".$_POST['nombrePaciente']."%'
-            AND Apellido like  '%".$_POST['apellidoPaciente']."%';";
-    $rec = mysqli_query($conexion, $sql);
-    $array = mysqli_fetch_array($rec);
-    $i = $i + 1;
-    $_SESSION['pacienteActivo'] = $array['idPaciente'];
+if (!isset($_SESSION['userid'])) {
+    header("Location: ../dashboard.php?va=sig");
 }
+else{
+
+$query = "SELECT * FROM paciente";
+$patientList = mysqli_query($conexion, $query);
+
+
 }
 
 ?>
@@ -54,10 +32,11 @@ if(empty($busqueda) or empty($busqueda2)){
     <link href="vendors/toastr/css/toastr.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="vendors/chartist/css/chartist.min.css">
     <link href="vendors/nvd3/css/nv.d3.min.css" rel="stylesheet" type="text/css">
-    <link href="vendors/morrisjs/morris.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="vendors/bootstrap-table/css/bootstrap-table.min.css">
     <link rel="stylesheet" type="text/css" href="vendors/awesomebootstrapcheckbox/css/awesome-bootstrap-checkbox.css">
     <link href="vendors/bower-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/custom_css/bootstrap_tables.css">
     <link href="css/custom_css/dashboard1.css" rel="stylesheet" type="text/css"/>
     <!--end of page level css-->
 </head>
@@ -254,39 +233,69 @@ if(empty($busqueda) or empty($busqueda2)){
         </section>
         <section class="content">
             <div class="row">
-                <div class="col-md-13">
-                    <div class="panel panel-danger">
+                <div class="col-lg-12">
+                    <div class="panel panel-success filterable">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="glyphicon glyphicon-check"></i> Datos del Paciente
+                                <i class="fa fa-fw fa-check"></i> Seleccionar Paciente
                             </h3>
-                            <span class="pull-right">
-                                <i class="fa fa-fw fa-chevron-up clickable"></i>
-                                </span>
+                                <span class="pull-right">
+                                    <i class="fa fa-fw fa-chevron-up clickable"></i>
+                                </span>                            
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                                <div class="form-group">
-                                    <label for="input-text" class="col-sm-2 control-label">Nombres del Paciente </label>
-                                    <div class="col-sm-3">
-                                        <input type="text" name="nombrePaciente" class="form-control" id="input-text"
-                                               value="<?php if($i == 1){print_r("");}else{print_r($array['1']);} ?> " >
-                                    </div>
-                                
-                                    <label for="input-text" class="col-sm-2 control-label">Apellidos del Paciente </label>
-                                    <div class="col-sm-3">
-                                        <input type="text" name="apellidoPaciente" class="form-control" id="input-text"
-                                               value="<?php if($i ==1 ){echo "";}else{ print_r($array['2']);} ?>">
-                                    </div>
-                                </div>
+                            <table id="table4" data-toolbar="#toolbar" data-search="true" data-show-refresh="false" 
+                                    data-detail-formatter="detailFormatter"
+                                   data-minimum-count-columns="2" 
+                                    data-id-field="id" data-page-list="[10, 20,40,ALL]"
+                                   data-show-footer="false" data-height="503">
+                                <thead>
+                                <tr>
+                                    <th data-field="id" data-sortable="true">Id</th>
+                                    <th data-field="nombre" data-sortable="true">Nombres </th>
+                                    <th data-field="apellido" data-sortable="true">Apellidos</th>
+                                    <th data-field="edad" data-sortable="true">Edad</th>
+                                    <th data-field="genero" data-sortable="true">Genero</th>
+                                    <th data-field="estado civil" data-sortable="true">Estado Civil</th>
+                                    <th data-field="religion" data-sortable="true">Religión</th>
+                                    <th data-field="originario" data-sortable="true">Originario</th>
+                                    <th data-field="reside" data-sortable="true">Residente</th>
+                                    <th data-field="naci" data-sortable="true">Fecha de Nacimiento</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                while($row = mysqli_fetch_array($patientList)){
+                                 ?>
+                                <tr>
+                                    <td><input type="radio" name="optionsRadios" id="optionsRadios1"
+                                                       value="option1"></td>
+                                    <td><?php print_r($row[1]);?></td>
+                                    <td><?php print_r($row[2]);?></td>
+                                    <td><?php
+                                        $fecha = explode("/", $row[10]);
+                                        $hoy = date(Y);
+                                        $anios = $hoy - $fecha['2'];
+                                        print_r($anios);     
+                                        ?></td>
+                                    <td><?php print_r($row[3]);?></td>
+                                    <td><?php print_r($row[5]);?></td>
+                                    <td><?php print_r($row[6]);?></td>
+                                    <td><?php print_r($row[8]);?></td>
+                                    <td><?php print_r($row[9]);?></td>
+                                    <td><?php print_r($row[10]);?></td>
+                                </tr>
+                                <?php }       
+                                 ?>
+                                </tbody>
+                            </table>
                             <br>
                                 <center><button type="submit"
-                                class="button button-rounded button-primary-flat" onclick="">Verificar</button></center>
-                            </form>
+                                class="button button-rounded button-primary-flat" onclick="">Seleccionar</button></center>
                         </div>
                     </div>
                 </div>
-            </div>   
+            </div>
         </section>
         <div class="col-sm-12">
                 <a href="consulta.php?va=cnt" class="col-xs-12 btn btn-primary btn-lg btn-md"
@@ -301,25 +310,14 @@ if(empty($busqueda) or empty($busqueda2)){
 <!-- end of global js -->
 <!-- begining of page level js -->
 <script src="js/backstretch.js"></script>
+<script type="text/javascript" src="vendors/editable-table/js/mindmup-editabletable.js"></script>
+<script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
 <!--sales tiles-->
 <script src="vendors/countupcircle/js/jquery.countupcircle.js" type="text/javascript"></script>
 <script src="vendors/granim/js/granim.min.js" type="text/javascript"></script>
-<!-- end of sales tiles -->
-<!-- Flot tab2-->
-
-<script src="vendors/flotspline/js/jquery.flot.spline.min.js" type="text/javascript"></script>
-<!-- end of flot tab2 -->
-<script type="text/javascript" src="vendors/chartist/js/chartist.min.js"></script>
-<!--morris donut-->
-<script type="text/javascript" src="vendors/morrisjs/morris.min.js"></script>
-<script type="text/javascript" src="vendors/d3/d3.min.js"></script>
-<script type="text/javascript" src="vendors/nvd3/js/nv.d3.min.js"></script>
-<script type="text/javascript" src="js/custom_js/stream_layers.js"></script>
-<!--maps-->
-<script src="vendors/bower-jvectormap/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="vendors/bower-jvectormap/js/jquery-jvectormap-world-mill-en.js"></script>
-<!-- end of maps -->
+<script src="js/custom_js/bootstrap_tables.js" type="text/javascript"></script>
 <script src="js/dashboard1.js" type="text/javascript"></script>
+
 <script>
         $('.slim').slimscroll({
             height: '100vh',
