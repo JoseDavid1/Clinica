@@ -1,18 +1,12 @@
 <?php
-session_start();
-error_reporting(0);
+include('funciones.php');
 
-include_once('../conexion.php');
-if (!isset($_SESSION['userid'])) {
-    header("Location: ../dashboard.php?va=sig");
-}
-else{
+verificarLogin();
+error_reporting(0);
 
 $query = "SELECT * FROM paciente";
 $patientList = mysqli_query($conexion, $query);
 
-
-}
 ?>
 
 <!DOCTYPE html>

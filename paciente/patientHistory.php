@@ -1,15 +1,14 @@
-<?php 
-include_once('../conexion.php');
-session_start();
- if(!isset($_SESSION['userid'])) 
-{
-    header("location:../logearse.php");
-}
+<?php
+include('funciones.php');
+
+verificarLogin();
+pacienteActivo();
 error_reporting(0);
 
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runDatos = mysqli_query($conexion, $datosPaciente);
 $array = mysqli_fetch_array($runDatos);
+
 
 $historialPaciente = "SELECT * FROM consulta 
                     WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";

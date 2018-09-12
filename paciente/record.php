@@ -1,13 +1,9 @@
 <?php 
-//se inicia la variable de sesión
-session_start();
+include('funciones.php');
+verificarLogin();
+pacienteActivo();
 error_reporting(0);
-include("conexion.php");
-if(!isset($_SESSION['userid'])){
-    header("Location:logearse.php");
-}
 
-//consulta para obtener los datos del paciente
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runDatos = mysqli_query($conexion, $datosPaciente);
 $array = mysqli_fetch_array($runDatos);
@@ -16,14 +12,12 @@ if (!isset($_SESSION['pacienteActivo'])) {
 
 }else{
 
-    //consulta para verificar "consultas" por paciente
 $traerAntedecentes = "SELECT * FROM antecedentes 
 					WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runQuery = mysqli_query($conexion, $traerAntedecentes);
 $arrayAntecedentes = mysqli_fetch_array($runQuery);
 
 }
-//consulta para los antecedentes por paciente
 $consultar = "SELECT * FROM antecedentes 
                     WHERE Paciente_idPaciente = '".$_SESSION['pacienteActivo']."';";
     $runConsulta = mysqli_query($conexion, $consultar);
@@ -37,7 +31,7 @@ $consultar = "SELECT * FROM antecedentes
     <meta charset="UTF-8">
     <title>Clínica Médica</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="shortcut icon" href="img/icono.ico"/>
+    <link rel="shortcut icon" href="../img/icono.ico"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,20 +39,20 @@ $consultar = "SELECT * FROM antecedentes
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <!-- global css -->
-    <link type="text/css" href="css/app.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/app.css" rel="stylesheet"/>
     <!-- end of global css -->
     <!--page level css -->
-    <link href="vendors/iCheck/css/all.css" rel="stylesheet"/>
-    <link href="css/buttons_sass.css" rel="stylesheet">
-    <link href="css/advbuttons.css" rel="stylesheet">    
-    <link href="vendors/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css"/>
-    <link href="vendors/daterangepicker/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
-    <link href="vendors/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="vendors/datedropper/datedropper.css">
-    <link rel="stylesheet" type="text/css" href="vendors/timedropper/css/timedropper.css">
-    <link rel="stylesheet" type="text/css" href="vendors/jquerydaterangepicker/css/daterangepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
-    <link rel="stylesheet" type="text/css" href="css/formelements.css">
+    <link href="../vendors/iCheck/css/all.css" rel="stylesheet"/>
+    <link href="../css/buttons_sass.css" rel="stylesheet">
+    <link href="../css/advbuttons.css" rel="stylesheet">    
+    <link href="../vendors/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="../vendors/daterangepicker/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+    <link href="../vendors/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../vendors/datedropper/datedropper.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/timedropper/css/timedropper.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/jquerydaterangepicker/css/daterangepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/formelements.css">
 
 </head>
 
@@ -68,7 +62,7 @@ $consultar = "SELECT * FROM antecedentes
     <div class="loader_img"><img src="img/loader.gif" alt="loading..." height="64" width="64"></div>
 </div>
 <!-- header logo: style can be found in header-->
-<?php include("menu/menu-principal.php"); ?>
+<?php include("../menu/submenu.php"); ?>
     
     <aside class="right-side">
         <!-- Content Header (Page header) -->
@@ -226,17 +220,17 @@ $consultar = "SELECT * FROM antecedentes
 </div>
 <!-- ./wrapper -->
 <!-- global js -->
-<script src="js/app.js" type="text/javascript"></script>
+<script src="../js/app.js" type="text/javascript"></script>
 
 <!-- end of global js -->
 <!-- begining of page level js -->
-<script src="vendors/iCheck/js/icheck.js"></script>
-<script src="vendors/moment/js/moment.min.js" type="text/javascript"></script>
-<script src="vendors/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-<script src="vendors/datedropper/datedropper.js" type="text/javascript"></script>
-<script src="js/custom_js/form_elements.js"></script>
-<script src="js/custom_js/datepickers.js" type="text/javascript"></script>
-<script src="vendors/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
+<script src="../vendors/iCheck/js/icheck.js"></script>
+<script src="../vendors/moment/js/moment.min.js" type="text/javascript"></script>
+<script src="../vendors/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script src="../vendors/datedropper/datedropper.js" type="text/javascript"></script>
+<script src="../js/custom_js/form_elements.js"></script>
+<script src="../js/custom_js/datepickers.js" type="text/javascript"></script>
+<script src="../vendors/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
 
 <!-- end of page level js -->
 </body>

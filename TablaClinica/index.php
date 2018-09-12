@@ -1,7 +1,18 @@
 <?php
-	require("./conexion.php");
+	include_once("../conexion.php");
 	require("./logear.php");
+	function conectar(){
+			try{
+				return true;
+			}
+			catch(PDOException $e){
+				return false;
+			}
+		}
+
+
 	$obj = new Login();
+
 	if($obj->conectar()){				
 				
 	}else{

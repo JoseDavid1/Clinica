@@ -1,8 +1,6 @@
 <?php 
-session_start();
-if (!isset($_SESSION['userid'])) {
-    header("Location: ../index.php?va=sig");
-}
+include('funciones.php');
+verificarLogin();
 error_reporting(0);
 ?>
 <!DOCTYPE html>
