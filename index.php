@@ -17,6 +17,12 @@ $patientList = mysqli_query($conexion, $query);
 
 
 }
+if(!$_SESSION['pacienteActivo']){
+
+    $dato = $_POST['optionsRadios'];
+    $_SESSION['pacienteActivo'] = $dato;
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -39,6 +45,7 @@ $patientList = mysqli_query($conexion, $query);
     <link rel="stylesheet" type="text/css" href="../css/custom_css/bootstrap_tables.css">
     <link href="css/custom_css/dashboard1.css" rel="stylesheet" type="text/css"/>
     <!--end of page level css-->
+
 </head>
 <body class="skin-coreplus">
 <div class="preloader">
@@ -243,6 +250,7 @@ $patientList = mysqli_query($conexion, $query);
                                     <i class="fa fa-fw fa-chevron-up clickable"></i>
                                 </span>                            
                         </div>
+                <form class="form-horizontal"  role="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" >
                         <div class="panel-body">
                             <table id="table4" data-toolbar="#toolbar" data-search="true" data-show-refresh="false" 
                                     data-detail-formatter="detailFormatter"
@@ -268,8 +276,8 @@ $patientList = mysqli_query($conexion, $query);
                                 while($row = mysqli_fetch_array($patientList)){
                                  ?>
                                 <tr>
-                                    <td><input type="radio" name="optionsRadios" id="optionsRadios1"
-                                                       value="option1"></td>
+                                    <td><input type="radio" name="optionsRadios" 
+                                                       value="<?php print_r($row['0']);?>"><?php print_r($row['0']);?></td>
                                     <td><?php print_r($row[1]);?></td>
                                     <td><?php print_r($row[2]);?></td>
                                     <td><?php
@@ -291,16 +299,13 @@ $patientList = mysqli_query($conexion, $query);
                             </table>
                             <br>
                                 <center><button type="submit"
-                                class="button button-rounded button-primary-flat" onclick="">Seleccionar</button></center>
+                                class="button button-rounded button-primary-flat" >Seleccionar</button></center>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="col-sm-12">
-                <a href="consulta.php?va=cnt" class="col-xs-12 btn btn-primary btn-lg btn-md"
-                   data-loading-text="Generar Nueva Consulta">Nueva Consulta</a>
-        </div>
     </aside>
 </div>
 <!-- ./wrapper -->
