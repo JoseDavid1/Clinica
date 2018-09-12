@@ -54,24 +54,6 @@ if(!$_SESSION['pacienteActivo']){
 <!-- header logo: style can be found in header-->
 <?php include("menu/menu-principal.php"); ?>
     <aside class="right-side">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="index-header">
-                <div class="inner-bg">
-                    <div class="header-section">
-                        <div class="row">
-                            <div class="col-md-2 col-lg-12 hidden-xs hidden-sm">
-                                <h1>Bienvenido - <?php echo $_SESSION['nombre']; ?>  
-                                </h1>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </aside>
-    <aside class="right-side">
         <!--section ends-->
         <section class="content sec-mar">
             <div class="row">
