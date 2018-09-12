@@ -54,7 +54,7 @@ if(ventanaActiva!= null){
                     <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown">
                         <div class="riot">
                             <div>
-                                Configuración
+                                <?php echo $_SESSION['nombre']; ?>
                                 <span>
                                         <i class="caret"></i>
                                     </span>
