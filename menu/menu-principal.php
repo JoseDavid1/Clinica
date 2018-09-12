@@ -5,7 +5,6 @@ session_start();
     header("location:logearse.php");
 }
 error_reporting(0);
-$_SESSION['pagina'] = '';
 
 ?>
 <script src="jquery-3.2.1.min.js"></script>
@@ -131,6 +130,11 @@ if(ventanaActiva!= null){
                                     <i class="fa fa-fw fa-archive"></i> Listado de Pacientes
                                 </a>
                             </li>
+                            <li  id="otm">
+                                <a href="paciente/outsideExam.php?va=otm">
+                                    <i class="fa fa-fw fa-archive"></i> Examen 
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <ul class="sub-menu">
@@ -142,7 +146,7 @@ if(ventanaActiva!= null){
                     </ul>    
                     <ul class="sub-menu">
                         <li id="rcd">
-                            <a href="record.php?va=rcd">
+                            <a href="paciente/record.php?va=rcd">
                                 <i class="fa fa-fw fa-files-o"></i>
                                 <span class="mm-text ">Antecedentes</span>
                             </a>

@@ -1,12 +1,13 @@
 <?php
 session_start();
-error_reporting(0);
  if(!isset($_SESSION['userid'])) 
 {
     header("location:../logearse.php");
 }
-?>
+error_reporting(0);
 
+
+?>
 <script src="../jquery-3.2.1.min.js"></script>
  <script>
     function getQueryVariable(variable) {
@@ -143,7 +144,7 @@ if(ventanaActiva!= null){
                     </ul>
                     <ul class="sub-menu">
                         <li id="rcd">
-                            <a href="../record.php?va=rcd">
+                            <a href="../paciente/record.php?va=rcd">
                                 <i class="fa fa-fw fa-files-o"></i>
                                 <span class="mm-text ">Antecedentes</span>
                             </a>
