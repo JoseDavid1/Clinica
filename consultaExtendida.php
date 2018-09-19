@@ -3,14 +3,10 @@
 session_start();
 error_reporting(0);
 include("conexion.php");
-include("paciente/funciones.php");
-
 if(!isset($_SESSION['userid'])){
 
     header("Location:logearse.php");
 }
-pacienteActivoIndex();
-
 //consulta que devuelve los datos del paciente
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runDatos = mysqli_query($conexion, $datosPaciente);
@@ -119,7 +115,8 @@ $array = mysqli_fetch_array($runDatos);
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="paciente/insertConsulta.php" method="POST" enctype="multipart/form-data">
+                            <form class="form-horizontal" role="form" action="paciente/insertConsultaExtendida.php" method="POST" enctype="multipart/form-data">
+                                <h3>Datos generales</h3>
                                 <div class="form-group">
                                         <label for="input-text" class="col-sm-3 control-label">
                                             Fecha de   <br>
@@ -155,6 +152,99 @@ $array = mysqli_fetch_array($runDatos);
                                                placeholder="Diagnostico de la consulta">
                                     </div>
                                 </div>
+                                <h3>Signos vitales</h3>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">FC:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="frecuencia" class="form-control" id="input-text"
+                                               placeholder="Frecuencia Cardiaca">
+                                    </div>
+                                    <label for="input-text" class="col-sm-3 control-label">P/A:</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" name="presion" class="form-control" id="input-text"
+                                               placeholder="Presion Arterial">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">SO2:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="saturacion" class="form-control" id="input-text"
+                                               placeholder="Saturacion Oxigeno">
+                                    </div>
+                                    <label for="input-text" class="col-sm-3 control-label">Temperatura:</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" name="temperatura" class="form-control" id="input-text"
+                                               placeholder="Temperatura">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">FR:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="respiratoria" class="form-control" id="input-text"
+                                               placeholder="Frecuencia Respiratoria">
+                                    </div>
+                                </div>
+                                <h3>Estado General</h3>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">Piel y faneras:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="piel" class="form-control" 
+                                        id="input-text"placeholder="">
+                                    </div>
+                                    <label for="input-text" class="col-sm-3 control-label">Cabeza:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="cabeza" class="form-control" id="input-text"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">Cuello:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="cuello" class="form-control" 
+                                        id="input-text"placeholder="">
+                                    </div>
+                                    <label for="input-text" class="col-sm-3 control-label">Torax:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="torax" class="form-control" id="input-text"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">Pulmones:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="pulmones" class="form-control" 
+                                        id="input-text"placeholder="">
+                                    </div>
+                                    <label for="input-text" class="col-sm-3 control-label">Corazón:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="corazon" class="form-control" id="input-text"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">Abdomen:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="abdomen" class="form-control" 
+                                        id="input-text"placeholder="">
+                                    </div>
+                                    <label for="input-text" class="col-sm-3 control-label">Ginecologico:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="ginecologico" class="form-control" id="input-text"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-text" class="col-sm-3 control-label">Extremidades:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="extremidades" class="form-control" 
+                                        id="input-text"placeholder="">
+                                    </div>
+                                    <label for="input-text" class="col-sm-3 control-label">Neurologico:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="neurologico" class="form-control" id="input-text"
+                                               placeholder="">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="input-text" class="col-sm-3 control-label" >Tratamiento Recomendado: </label>
                                     <div class="col-sm-6">
@@ -169,14 +259,8 @@ $array = mysqli_fetch_array($runDatos);
                                     <input type="reset" value="Borrar Consuta"
                                            class="btn btn-danger btn-block btn-md btn-responsive">
                                 </div>
+                                
                                 <div class="col-xs-5 col-md-3 col-md-offset-3">
-                                    <a href="consultaExtendida.php?va=cnt">
-                                    <input type="button" id="Exam" value="Examen Fisico"
-                                           class="btn btn-success btn-block btn-md btn-responsive"
-                                           tabindex="7">
-                                    </a>
-                                </div>
-                                <div class="col-xs-5 col-md-3 ">
                                     <input type="submit" id="btncheck1" value="Generar Receta"
                                            class="btn btn-primary btn-block btn-md btn-responsive"
                                            tabindex="7">

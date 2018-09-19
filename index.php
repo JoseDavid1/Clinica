@@ -6,7 +6,7 @@ session_start();
 }
 error_reporting(0);
 include_once('conexion.php');
-
+$_SESSION['pacienteActivo'] = "";
 if (!isset($_SESSION['userid'])) {
     header("Location: ../dashboard.php?va=sig");
 }
@@ -259,7 +259,7 @@ if(!$_SESSION['pacienteActivo']){
                                  ?>
                                 <tr>
                                     <td><input type="radio" name="optionsRadios" 
-                                                       value="<?php print_r($row['0']);?>"><?php print_r($row['0']);?></td>
+                                                       value="<?php print_r($row['0']);?>"></td>
                                     <td><?php print_r($row[1]);?></td>
                                     <td><?php print_r($row[2]);?></td>
                                     <td><?php

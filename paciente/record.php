@@ -59,7 +59,7 @@ $consultar = "SELECT * FROM antecedentes
 <body class="skin-coreplus">
    
 <div class="preloader">
-    <div class="loader_img"><img src="img/loader.gif" alt="loading..." height="64" width="64"></div>
+    <div class="loader_img"><img src="../img/loader.gif" alt="loading..." height="64" width="64"></div>
 </div>
 <!-- header logo: style can be found in header-->
 <?php include("../menu/submenu.php"); ?>
@@ -125,7 +125,7 @@ $consultar = "SELECT * FROM antecedentes
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="paciente/updateRecord.php" method="POST" enctype="multipart/form-data">
+                            <form class="form-horizontal" role="form" action="updateRecord.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="input-text" class="col-sm-3 control-label" >Medicos: </label>
                                     <div class="col-sm-6">
