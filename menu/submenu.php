@@ -71,7 +71,7 @@ if(ventanaActiva!= null){
                         <!-- Menu Body -->
                         <li class="p-t-3"><a href="#"> <i class="fa fa-fw fa-user"></i> Mi perfil </a>
                         </li>
-                        <li class="p-t-3"><a href="client/changePassword.php?va=psw"> <i class="fa fa-fw fa-key"></i> Cambiar Contraseña </a>
+                        <li class="p-t-3"><a href="../user/changePass.php"> <i class="fa fa-fw fa-key"></i> Cambiar Contraseña </a>
                         </li>
                         <li role="presentation"></li>
                         <li role="presentation" class="divider"></li>
