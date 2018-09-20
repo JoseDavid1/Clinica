@@ -1,27 +1,35 @@
 <?php
 session_start();
- if(!isset($_SESSION['userid'])) 
-{
-    header("location:index.php");
-}
+date_default_timezone_set('America/Guatemala');
 error_reporting(0);
 include_once('conexion.php');
+
+$diaActual = date("j")."/".date("m")."/".date("Y");
+$mes = "1".date("m").date("Y");
 $_SESSION['pacienteActivo'] = "";
+
+
 if (!isset($_SESSION['userid'])) {
-    header("Location: ../dashboard.php?va=sig");
+    header("Location: index.php");
 }
 else{
 
 $query = "SELECT * FROM paciente";
 $patientList = mysqli_query($conexion, $query);
 
+$dia = "SELECT COUNT(*) FROM consulta WHERE FechaConsuta = '".$diaActual."';";
+$runFecha = mysqli_query($conexion,$dia);
+$datoFecha = mysqli_fetch_array($runFecha);
 
+$mes = "SELECT COUNT(*) FROM consulta WHERE FechaConsuta BETWEEN '".$mes."' AND '".$diaActual."';";
+$runMes = mysqli_query($conexion,$mes);
+$datoMes = mysqli_fetch_array($runMes);
 }
+
 if(!$_SESSION['pacienteActivo']){
 
     $dato = $_POST['optionsRadios'];
     $_SESSION['pacienteActivo'] = $dato;
-
 }
 
 ?>
@@ -73,7 +81,7 @@ if(!$_SESSION['pacienteActivo']){
                                         <div class="widget-count panel-white">
                                             <div class="item-label text-center">
                                                 <div id="count-box1" class="count-box">
-                                                    <?php print_r($saldoAhorro['0']); ?>
+                                                    <?php  ?>
                                                 </div>
                                                 <span class="title">Personas en espera</span>
                                             </div>
@@ -96,10 +104,10 @@ if(!$_SESSION['pacienteActivo']){
                                         </div>
                                         <div class="widget-count panel-white">
                                             <div class="item-label text-center">
-                                                <div id="count-box2" class="count-box">
-                                                    <?php print_r($ejectVYS['0']); ?>
-                                                </div>
                                                 <span class="title">Consultas en el día</span>
+                                                <div id="count-box2" class="count-box">
+                                                    <?php print_r($datoFecha['0']);?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -119,12 +127,10 @@ if(!$_SESSION['pacienteActivo']){
                                         </div>
                                         <div class="widget-count panel-white">
                                             <div class="item-label text-center">
-                                                <div id="count-box2" class="count-box">
-                                                    <?php/*
-                                                    include_once('cambio.php');
-                                                    printf($dato); */?>
-                                                </div>
                                                 <span class="title">Consultas en el mes</span>
+                                                <div id="count-box2" class="count-box">
+                                                    <?php print_r($datoMes['0']); ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -145,9 +151,7 @@ if(!$_SESSION['pacienteActivo']){
                                         <div class="widget-count panel-white">
                                             <div class="item-label text-center">
                                                 <div id="count-box3" class="count-box">
-                                                    <?php /* if ($eject['0'] == null ) {
-                                                        print_r("0");}
-                                                        print_r($eject['0']); */?>
+                                                    <?php ?>
                                                 </div>
                                                 <span class="title">Pagos y Servicios</span>
                                             </div>
@@ -156,64 +160,6 @@ if(!$_SESSION['pacienteActivo']){
                                 </div>
                             </div>
                         </div>
-                        <!--
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 tile-bottom">
-                            <div class="widget" data-count=".num" data-from="0"
-                                 data-to="512" data-duration="3">
-                                <div class="canvas-interactive-wrapper5">
-                                    <canvas id="canvas-interactive5"></canvas>
-                                    <div class="cta-wrapper5">
-                                        <div class="item">
-                                            <div class="widget-icon pull-left icon-color animation-fadeIn">
-                                              <i class="fa fa-fw fa-credit-card"></i>
-                                            </div>
-                                        </div>
-                                        <div class="widget-count panel-white">
-                                            <div class="item-label text-center">
-                                                <div id="count-box4" class="count-box">
-                                                    <?php 
-                                                    /*if ($saldoTarjeta == null ) {
-                                                        print_r("0");
-                                                    }
-                                                    print_r($saldoTarjeta['0']); */?>
-                                                </div>
-                                                <span class="title">Saldo Tarjeta de Crédito</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-                        <!--
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 tile-bottom">
-                            <div class="widget" data-count=".num" data-from="0"
-                                 data-to="512" data-duration="3">
-                                <div class="canvas-interactive-wrapper6">
-                                    <canvas id="canvas-interactive6"></canvas>
-                                    <div class="cta-wrapper6">
-                                        <div class="item">
-                                            <div class="widget-icon pull-left icon-color animation-fadeIn">
-                                               <i class="fa fa-fw fa-pencil-square-o"></i>
-                                            </div>
-                                        </div>
-                                        <div class="widget-count panel-white">
-                                            <div class="item-label text-center">
-                                                <div id="count-box5" class="count-box">
-                                                    <?php 
-                                                        /*if ($saldoPrestamo['0'] == null) {
-                                                            print_r("0");
-                                                        }
-                                                    print_r($saldoPrestamo['0']); */?>
-                                                </div>
-                                                <span class="title">Prestamos</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                         <br>
                         <br>
                     </div>
