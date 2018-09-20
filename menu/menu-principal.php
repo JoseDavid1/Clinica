@@ -151,15 +151,29 @@ if(ventanaActiva!= null){
                                 <span class="mm-text ">Antecedentes</span>
                             </a>
                         </li>
-                    </ul>    
-                    <ul class="sub-menu">
-                        <li id="cnt">
-                            <a href="consulta.php?va=cnt">
-                                <i class="fa fa-fw fa-edit"></i>
-                                <span class="mm-text ">Nueva Consulta</span>
-                            </a>
-                        </li>
                     </ul>
+                    <li  class= 'menu-dropdown' id="clt">
+                        <a href="#">
+                        <i class="fa fa-fw fa-pencil-square"></i>
+                            <span>Consultas</span>
+                                <span class="fa arrow">
+                                </span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li id="cnt">
+                                <a href="consulta.php?va=cnt">
+                                    <i class="fa fa-fw fa-edit"></i>
+                                    <span class="mm-text ">Consulta Rapida</span>
+                                </a>
+                            </li>
+                            <li id="cne">
+                                <a href="consultaExtendida.php?va=cne">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    <span class="mm-text ">Consulta Extendida</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> 
                         </ul>
                     </li>                 
                 </ul>
