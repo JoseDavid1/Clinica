@@ -3,10 +3,12 @@
 session_start();
 error_reporting(0);
 include("conexion.php");
+include("paciente/funciones.php");
 if(!isset($_SESSION['userid'])){
 
     header("Location:logearse.php");
 }
+pacienteActivoIndex();
 //consulta que devuelve los datos del paciente
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runDatos = mysqli_query($conexion, $datosPaciente);

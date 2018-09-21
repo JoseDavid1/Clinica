@@ -1,11 +1,12 @@
 <?php
 session_start();
 error_reporting(0);
+include_once "../conexion.php";
  if(!isset($_SESSION['userid'])) 
 {
     header("location:../logearse.php");
 }
-include_once "../conexion.php";
+
 
 
 ?>
