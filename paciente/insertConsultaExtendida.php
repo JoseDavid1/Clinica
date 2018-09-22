@@ -2,13 +2,17 @@
 include('../conexion.php');
 session_start();
 
+//Datos para la receta, tienen un comentario "Receta"
+$_SESSION['tratamiento'] = '';
+
 #Datos de consulta normal
-$paciente = $_SESSION['pacienteActivo'];
-$fecha = $_POST['present'];
+$paciente = $_SESSION['pacienteActivo']; //Receta
+$fecha = $_POST['present']; //Receta
 $motivo = $_POST['motivoConsulta'];
 $historia = $_POST['historiaConsulta'];
 $diagnostico = $_POST['diagnostico'];
-$tratamiento = $_POST['tratamiento'];
+$tratamiento = $_POST['tratamiento']; //Receta
+$_SESSION['tratamiento'] = $tratamiento;
 
 #Datos consulta Extendida
 $frecuencia = $_POST['frecuencia'];
@@ -28,6 +32,9 @@ $extremidades = $_POST['extremidades'];
 $neurologico = $_POST['neurologico'];
 
 
+header("Location: ../test.php?data=$fecha");
+
+/*
 function generarCodigo($longitud, $tipo=0)
 		{
 		    $codigo = "";
@@ -42,7 +49,7 @@ function generarCodigo($longitud, $tipo=0)
 
 $codigo = generarCodigo(10);
 		
-
+/*
 $nuevaConsulta = "INSERT INTO consulta 
 (FechaConsuta,MotivoConsulta,HistoriaEnfermedad,Diagnostico,TratamientoRecomendado,Observaciones,Paciente_idPaciente) VALUES 
 ('".$fecha."','".$motivo."','".$historia."','".$diagnostico."','".$tratamiento."','".$codigo."','".$paciente."');";
@@ -69,4 +76,5 @@ $insertarConsulta = mysqli_query($conexion,$nuevaConsulta);
 
 		}
 	}
+	*/
 ?>

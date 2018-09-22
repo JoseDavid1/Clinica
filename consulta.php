@@ -170,7 +170,7 @@ $array = mysqli_fetch_array($runDatos);
                                            class="btn btn-danger btn-block btn-md btn-responsive">
                                 </div>
                                 <div class="col-xs-5 col-md-3 col-md-offset-3">
-                                    <a href="consultaExtendida.php?va=cnt">
+                                    <a href="consultaExtendida.php?va=cne">
                                     <input type="button" id="Exam" value="Examen Fisico"
                                            class="btn btn-success btn-block btn-md btn-responsive"
                                            tabindex="7">
