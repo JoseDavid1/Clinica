@@ -130,28 +130,28 @@ if(ventanaActiva!= null){
                                     <i class="fa fa-fw fa-archive"></i> Listado de Pacientes
                                 </a>
                             </li>
-                            <li  id="otm">
-                                <a href="paciente/outsideExam.php?va=otm">
-                                    <i class="fa fa-fw fa-archive"></i> Examen 
+                        </ul>
+                    </li>
+                    <li  class= 'menu-dropdown' id="clt">
+                        <a href="#">
+                        <i class="fa fa-fw fa-asterisk"></i>
+                            <span>Alergias</span>
+                                <span class="fa arrow">
+                                </span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li  id="nla">
+                                <a href="alergias/newAllergy.php?va=nla">
+                                    <i class="fa fa-fw fa-plus-circle"></i>Agregar Alergia
+                                </a>
+                            </li>
+                            <li  id="pll">
+                                <a href="alergias/patientAllergy.php?va=pll">
+                                    <i class="fa fa-fw fa-check-square-o"></i>Asignar Alergia a Paciente
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <ul class="sub-menu">
-                        <li  id="pht">
-                                <a href="paciente/patientHistory.php?va=pht">
-                                    <i class="fa fa-fw fa-folder-open"></i> Historial de Paciente
-                                </a>
-                        </li>   
-                    </ul>    
-                    <ul class="sub-menu">
-                        <li id="rcd">
-                            <a href="paciente/record.php?va=rcd">
-                                <i class="fa fa-fw fa-files-o"></i>
-                                <span class="mm-text ">Antecedentes</span>
-                            </a>
-                        </li>
-                    </ul>
                     <li  class= 'menu-dropdown' id="clt">
                         <a href="#">
                         <i class="fa fa-fw fa-pencil-square"></i>
@@ -173,7 +173,22 @@ if(ventanaActiva!= null){
                                 </a>
                             </li>
                         </ul>
-                    </li> 
+                    </li>
+                    <ul class="sub-menu">
+                        <li  id="pht">
+                                <a href="paciente/patientHistory.php?va=pht">
+                                    <i class="fa fa-fw fa-folder-open"></i> Historial de Paciente
+                                </a>
+                        </li>   
+                    </ul>    
+                    <ul class="sub-menu">
+                        <li id="rcd">
+                            <a href="paciente/record.php?va=rcd">
+                                <i class="fa fa-fw fa-files-o"></i>
+                                <span class="mm-text ">Antecedentes</span>
+                            </a>
+                        </li>
+                    </ul> 
                         </ul>
                     </li>                 
                 </ul>
