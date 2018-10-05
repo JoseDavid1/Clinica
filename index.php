@@ -67,6 +67,7 @@ if(!$_SESSION['pacienteActivo']){
             <div class="row">
                 <div class="col-md-16">
                     <div class="row tiles-row">
+                    
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 tile-bottom">
                             <div class="widget" data-count=".num" data-from="0"
                                          data-to="512" data-duration="1">
@@ -83,7 +84,7 @@ if(!$_SESSION['pacienteActivo']){
                                                 <div id="count-box1" class="count-box">
                                                     <?php  ?>
                                                 </div>
-                                                <span class="title">Personas en espera</span>
+                                                <span class="title">Disponible</span>
                                             </div>
                                         </div>
                                     </div>
@@ -153,7 +154,7 @@ if(!$_SESSION['pacienteActivo']){
                                                 <div id="count-box3" class="count-box">
                                                     <?php ?>
                                                 </div>
-                                                <span class="title">Pagos y Servicios</span>
+                                                <span class="title">Disponible</span>
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +185,7 @@ if(!$_SESSION['pacienteActivo']){
                                     data-detail-formatter="detailFormatter"
                                    data-minimum-count-columns="2" 
                                     data-id-field="id" data-page-list="[10, 20,40,ALL]"
-                                   data-show-footer="false" data-height="503">
+                                   data-show-footer="false" data-height="303">
                                 <thead>
                                 <tr>
                                     <th data-field="id" data-sortable="true">Id</th>

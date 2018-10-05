@@ -1,6 +1,7 @@
 <?php 
 include('funciones.php');
 verificarLogin();
+tipoUsuario();
 error_reporting(0);
 ?>
 <!DOCTYPE html>

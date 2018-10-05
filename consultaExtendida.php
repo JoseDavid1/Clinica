@@ -8,6 +8,7 @@ if(!isset($_SESSION['userid'])){
 
     header("Location:logearse.php");
 }
+tipoUsuarioIndex();
 pacienteActivoIndex();
 //consulta que devuelve los datos del paciente
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";

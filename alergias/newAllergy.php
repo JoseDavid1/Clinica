@@ -2,6 +2,7 @@
 include_once('../conexion.php');
 include('../paciente/funciones.php');
 verificarLogin();
+tipoUsuario();
 error_reporting(0);
 
 $query = "SELECT * FROM alergias";

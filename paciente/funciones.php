@@ -63,5 +63,18 @@ function pacienteActivoIndex(){
 }
 }
 
+function tipoUsuario(){
+	if($_SESSION['tipoUsuario'] == 3){
+		header("Location: ../index.php?va=sig");
+	}
+
+}
+
+function tipoUsuarioIndex(){
+	if($_SESSION['tipoUsuario'] == 3){
+		header("Location: index.php?va=sig");
+	}
+
+}
 
 ?>

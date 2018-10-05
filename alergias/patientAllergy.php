@@ -3,6 +3,7 @@ include('../paciente/funciones.php');
 
 verificarLogin();
 pacienteActivo();
+tipoUsuario();
 error_reporting(0);
 
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
@@ -111,9 +112,9 @@ $runHistorial = mysqli_query($conexion, $historialPaciente);
                             <table data-toggle="table" data-sort-name="age" data-sort-order="desc"  data-height="300">
                                 <thead>
                                 <tr>
-                                    <th data-field="firstname" data-sortable="true">Fecha de Consulta</th>
-                                    <th data-field="lastname" data-sortable="true">Diagnostico</th>
-                                    <th data-field="position" data-sortable="true">Tratamiento</th>
+                                    <th data-field="nombreAlergia" data-sortable="true">Nombre de la Alergia</th>
+                                    <th data-field="descripcion" data-sortable="true">Descripcion de la alergia</th>
+                                    <th data-field="fecha" data-sortable="true">Fecha Detectada</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -150,7 +151,7 @@ $runHistorial = mysqli_query($conexion, $historialPaciente);
                     </div>
                     <div class="panel-body">
                         <div>
-                            <form class="form-horizontal"  role="form" action="insertAllergy.php" method="POST" >
+                            <form class="form-horizontal"  role="form" action="#.php" method="POST" >
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="control-label col-md-6">Alergias:</label>

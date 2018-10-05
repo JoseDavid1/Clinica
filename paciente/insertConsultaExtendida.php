@@ -31,10 +31,6 @@ $ginecologico = $_POST['ginecologico'];
 $extremidades = $_POST['extremidades'];
 $neurologico = $_POST['neurologico'];
 
-
-header("Location: ../test.php?data=$fecha");
-
-/*
 function generarCodigo($longitud, $tipo=0)
 		{
 		    $codigo = "";
@@ -49,7 +45,6 @@ function generarCodigo($longitud, $tipo=0)
 
 $codigo = generarCodigo(10);
 		
-/*
 $nuevaConsulta = "INSERT INTO consulta 
 (FechaConsuta,MotivoConsulta,HistoriaEnfermedad,Diagnostico,TratamientoRecomendado,Observaciones,Paciente_idPaciente) VALUES 
 ('".$fecha."','".$motivo."','".$historia."','".$diagnostico."','".$tratamiento."','".$codigo."','".$paciente."');";
@@ -74,7 +69,10 @@ $insertarConsulta = mysqli_query($conexion,$nuevaConsulta);
 		
 	   printf("Errormessage: %s\n", $conexion->error);
 
+		}else{
+
+			header("Location: ../test.php?data=$fecha");
 		}
 	}
-	*/
+
 ?>
