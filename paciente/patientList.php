@@ -88,6 +88,7 @@ $patientList = mysqli_query($conexion, $query);
                                     <th data-field="reside" data-sortable="true">Residente</th>
                                     <th data-field="naci" data-sortable="true">Fecha de Nacimiento</th>
                                     <th data-field="direccion" data-sortable="true">Direccion</th>
+                                    <th data-field="primeraVisita" data-sortable="true">Primer Consulta</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,6 +112,7 @@ $patientList = mysqli_query($conexion, $query);
                                     <td><?php print_r($row[9]);?></td>
                                     <td><?php print_r($row[10]);?></td>
                                     <td><?php print_r($row[4]);?></td>
+                                    <td><?php print_r($row[11]);?></td>
                                 </tr>
                                 <?php }       
                                  ?>

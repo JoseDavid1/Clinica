@@ -1,9 +1,11 @@
 <?php
 session_start();
+date_default_timezone_set('America/Guatemala');
 if (!isset($_SESSION['userid'])) {
     header("Location: ../index.php?va=sig");
 }
 include('../conexion.php');
+$diaActual = date("d")."/".date("m")."/".date("Y");
 
 
 if ($conexion->connect_errno) {
@@ -24,7 +26,7 @@ $genero = $_POST['genderRadios']; //Genero del paciente
 $nacimiento = $_POST['departure'];//Fecha de nacimiento
 
 
-$nuevoPaciente = "INSERT INTO paciente(Nombre,Apellido,Sexo,Direccion,EstadoCivil,Religion,Telefono,Originario,Residente,nacimiento) VALUES('".$nombre."','".$apellido."','".$genero."','".$direccion."','".$estadoCivil."','".$religion."','".$numero."','".$origen."','".$ciudad."','".$nacimiento."')";
+$nuevoPaciente = "INSERT INTO paciente(Nombre,Apellido,Sexo,Direccion,EstadoCivil,Religion,Telefono,Originario,Residente,nacimiento,primeraVisita) VALUES('".$nombre."','".$apellido."','".$genero."','".$direccion."','".$estadoCivil."','".$religion."','".$numero."','".$origen."','".$ciudad."','".$nacimiento."','".$diaActual."')";
 $runInsert = mysqli_query($conexion, $nuevoPaciente);
 
 if (!$runInsert) {
