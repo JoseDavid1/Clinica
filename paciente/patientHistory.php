@@ -107,7 +107,7 @@ $runHistorial = mysqli_query($conexion, $historialPaciente);
                                     <th data-field="date" data-sortable="true">Fecha de Consulta</th>
                                     <th data-field="diag" data-sortable="true">Diagnostico</th>
                                     <th data-field="trat" data-sortable="true">Tratamiento</th>
-                                    <th data-field="res">PDF</th>
+                                    <th data-field="res" >PDF</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -119,7 +119,7 @@ $runHistorial = mysqli_query($conexion, $historialPaciente);
                                     <td><?php print_r($array['1']); ?></td>
                                     <td><?php print_r($array['4']); ?></td>
                                     <td><?php print_r($array['5']); ?></td>
-                                    <td><a target="_blank" href="receta.php?date=<?php print_r($array['1'])?>&trat=<?php print_r($array['5'])?>"><i class="fa fa-fw fa-print" ></i></a>
+                                    <td><a target="_blank" href="../test.php?date=<?php print_r($array['1'])?>&trat=<?php print_r($array['5'])?>"><i class="fa fa-fw fa-print" ></i></a>
                                 </tr>
                                 <?php } ?>
                                 </tbody>

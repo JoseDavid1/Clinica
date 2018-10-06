@@ -11,7 +11,7 @@ $pdf->SetLineWidth(1);
 $consulta = mysqli_query($conexion,"SELECT * FROM paciente WHERE idPaciente ='".$_SESSION['pacienteActivo']."';");
 $row = mysqli_fetch_array($consulta);
 
-$fecha = explode('/',$_GET['data']);
+$fecha = explode('/',$_SESSION['fecha']);
 $nacimiento = explode('/',$row['nacimiento']);
 $hoy = date(Y);
 $anios = $hoy - $nacimiento['2'];

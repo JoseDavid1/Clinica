@@ -4,8 +4,8 @@ date_default_timezone_set('America/Guatemala');
 error_reporting(0);
 include_once('conexion.php');
 
-$diaActual = date("j")."/".date("m")."/".date("Y");
-$mes = "1".date("m").date("Y");
+$diaActual = date("d")."/".date("m")."/".date("Y");
+$mes = "01/". date("m")."/".date("Y");
 $_SESSION['pacienteActivo'] = "";
 
 
@@ -21,8 +21,8 @@ $dia = "SELECT COUNT(*) FROM consulta WHERE FechaConsuta = '".$diaActual."';";
 $runFecha = mysqli_query($conexion,$dia);
 $datoFecha = mysqli_fetch_array($runFecha);
 
-$mes = "SELECT COUNT(*) FROM consulta WHERE FechaConsuta BETWEEN '".$mes."' AND '".$diaActual."';";
-$runMes = mysqli_query($conexion,$mes);
+$mess = "SELECT COUNT(*) FROM consulta WHERE FechaConsuta BETWEEN '".$mes."' AND '".$diaActual."';";
+$runMes = mysqli_query($conexion,$mess);
 $datoMes = mysqli_fetch_array($runMes);
 }
 

@@ -4,6 +4,7 @@ session_start();
 
 //Datos para la receta, tienen un comentario "Receta"
 $_SESSION['tratamiento'] = '';
+$_SESSION['fecha'] = '';
 
 #Datos de consulta normal
 $paciente = $_SESSION['pacienteActivo']; //Receta
@@ -49,6 +50,7 @@ $nuevaConsulta = "INSERT INTO consulta
 (FechaConsuta,MotivoConsulta,HistoriaEnfermedad,Diagnostico,TratamientoRecomendado,Observaciones,Paciente_idPaciente) VALUES 
 ('".$fecha."','".$motivo."','".$historia."','".$diagnostico."','".$tratamiento."','".$codigo."','".$paciente."');";
 $insertarConsulta = mysqli_query($conexion,$nuevaConsulta);
+$_SESSION['fecha'] = $fecha;
 
 	if (!$insertarConsulta) {
 		
@@ -71,7 +73,10 @@ $insertarConsulta = mysqli_query($conexion,$nuevaConsulta);
 
 		}else{
 
-			header("Location: ../test.php?data=$fecha");
+		?>
+		<script type="text/javascript" language="Javascript">window.open('http://localhost/Clinicaa/test.php');</script>
+		<?php
+			//header("Location: patientHistory.php?va=pht");
 		}
 	}
 

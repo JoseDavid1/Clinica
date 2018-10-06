@@ -4,6 +4,7 @@ session_start();
 
 //Datos para la receta, tienen un comentario "Receta"
 $_SESSION['tratamiento'] = '';
+$_SESSION['fecha'] = '';
 
 #Datos de consulta normal
 $paciente = $_SESSION['pacienteActivo'];
@@ -23,8 +24,11 @@ $insertarConsulta = mysqli_query($conexion,$nuevaConsulta);
 		
 	   printf("Errormessage: %s\n", $conexion->error);
 	}else{
-	
-	header("Location: ../test.php?data=$fecha");;
-		
+	$_SESSION['fecha'] = $fecha;
+
+		?>
+	<script type="text/javascript" language="Javascript">window.open('http://localhost/Clinicaa/test.php');</script>	
+	<?php
+	//header("Location: patientHistory.php?va=pht");
 	}
 ?>
