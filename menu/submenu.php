@@ -69,7 +69,7 @@ if(ventanaActiva!= null){
                             <p>Clínica Médica</p>
                         </li>
                         <!-- Menu Body -->
-                        <li class="p-t-3"><a href="#"> <i class="fa fa-fw fa-user"></i> Mi perfil </a>
+                        <li class="p-t-3"><a href="../user/newuser.php"> <i class="fa fa-fw fa-user"></i> Nuevo Usuario</a>
                         </li>
                         <li class="p-t-3"><a href="../user/changePass.php"> <i class="fa fa-fw fa-key"></i> Cambiar Contraseña </a>
                         </li>
@@ -194,6 +194,14 @@ if(ventanaActiva!= null){
                             <a href="../paciente/record.php?va=rcd">
                                 <i class="fa fa-fw fa-files-o"></i>
                                 <span class="mm-text ">Antecedentes</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu">
+                        <li id="mni">
+                            <a href="../moduloin/index.php?va=mni">
+                                <i class="fa fa-fw fa-bar-chart-o"></i>
+                                <span class="mm-text ">Modulo IN</span>
                             </a>
                         </li>
                     </ul>
