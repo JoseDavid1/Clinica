@@ -151,7 +151,7 @@ $runHistorial = mysqli_query($conexion, $historialPaciente);
                     </div>
                     <div class="panel-body">
                         <div>
-                            <form class="form-horizontal"  role="form" action="#.php" method="POST" >
+                            <form class="form-horizontal"  role="form" action="insertPatientAllergy.php" method="POST" >
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="control-label col-md-6">Alergias:</label>

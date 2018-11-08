@@ -133,6 +133,11 @@ if(ventanaActiva!= null){
                                     <i class="fa fa-fw fa-archive"></i> Listado de Pacientes
                                 </a>
                             </li>
+                            <li  id="mdf">
+                                <a href="../paciente/patientModify.php?va=mdf">
+                                    <i class="fa fa-fw fa-refresh"></i> Actualizar de Pacientes
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li  class= 'menu-dropdown' id="clt">

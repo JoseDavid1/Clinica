@@ -105,7 +105,7 @@ include_once "../conexion.php";
                                        placeholder="Ingrese nuevamente la contraseña" autocomplete="off">
                                 <div>
                                     <div class="col-sm-10 padding">
-                                        <span id="pwmatch" class="glyphicon glyphicon-ok" style="color:#2ECC71;"></span>
+                                        <span id="pwmatch" name='contrasena' class="glyphicon glyphicon-ok" style="color:#2ECC71;"></span>
                                         Las Contraseñas Coinciden 
                                     </div>
                                 </div>

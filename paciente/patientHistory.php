@@ -1,9 +1,10 @@
-<?php
+﻿<?php
 include('funciones.php');
 
 verificarLogin();
 pacienteActivo();
 error_reporting(0);
+$_SESSION['tratamiento'] = '';
 
 $datosPaciente = "SELECT * FROM Paciente WHERE idPaciente = '".$_SESSION['pacienteActivo']."';";
 $runDatos = mysqli_query($conexion, $datosPaciente);
@@ -118,8 +119,9 @@ $runHistorial = mysqli_query($conexion, $historialPaciente);
                                 <tr>
                                     <td><?php print_r($array['1']); ?></td>
                                     <td><?php print_r($array['4']); ?></td>
-                                    <td><?php print_r($array['5']); ?></td>
-                                    <td><a target="_blank" href="../test.php?date=<?php print_r($array['1'])?>&trat=<?php print_r($array['5'])?>"><i class="fa fa-fw fa-print" ></i></a>
+                                    <td><?php print_r($array['5']);
+                                    $_SESSION['tratamiento'] = $array['5']; ?></td>
+                                    <td><a target="_blank" href="../reimpresion.php?date=<?php print_r($array['1'])?>&trat=<?php print_r($array['5']);?>"><i class="fa fa-fw fa-print" ></i></a>
                                 </tr>
                                 <?php } ?>
                                 </tbody>

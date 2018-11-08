@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 session_start();
 include("fpdf.php");
 include_once('conexion.php');
@@ -16,7 +16,8 @@ $nacimiento = explode('/',$row['nacimiento']);
 $hoy = date(Y);
 $anios = $hoy - $nacimiento['2'];
 
-$texto = utf8_decode($text);
+
+
 
 $pdf->Image('imagen.png','0','0','135','212','png'); 
 //IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
@@ -33,7 +34,7 @@ $pdf->Cell(14);
 $pdf->Cell(0,6,utf8_decode("    ".$row['Nombre']." ". $row['Apellido'] ."                                          ".$anios),0,1);
 $pdf->Cell(9);
 $pdf->ln(20);
-$pdf->MultiCell(0,4,utf8_decode($_SESSION['tratamiento']));
+$pdf->MultiCell(0,4,($_SESSION['tratamiento']));
 
 ob_end_clean();
 $pdf->Output();

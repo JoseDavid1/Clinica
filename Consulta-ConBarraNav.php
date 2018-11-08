@@ -131,7 +131,7 @@ $array = mysqli_fetch_array($runDatos);
                                             <div class="input-group-addon">
                                                 <i class="fa fa-fw fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" id="departure" name="present"  />
+                                            <input type="text" class="form-control" id="departure" name="present" value="<?php  $hoy = date('d/m/Y'); print_r($hoy)?>" />
                                         </div>
                                 </div>
                                 <div class="form-group">
@@ -159,10 +159,10 @@ $array = mysqli_fetch_array($runDatos);
                                 </div>
                                 <div class="form-group">
                                     <label for="input-text" class="col-sm-3 control-label" >Tratamiento Recomendado: </label>         
-                                <div class="col-sm-6">
-                                        <textarea type="text" name="tratamiento" class="form-control" id="input-text"
-                                               placeholder="Tratamiento Recomendado"></textarea>
-                                    </div>
+
+                                <div  class="col-sm-10" class="bootstrap-admin-panel-content summer_noted">
+                                    <textarea type="text" name="tratamiento" class="input-block-level" id="summernote"></textarea>
+                                </div>
                                 </div>
                             <br>                            
                             <div class="col-md-12">
@@ -210,7 +210,7 @@ $array = mysqli_fetch_array($runDatos);
 <script src="js/custom_js/form_elements.js"></script>
 
 
-
+<script src="js/custom_js/form_editors.js" type="text/javascript"></script>
 
 <script src="js/custom_js/datepickers.js" ></script>
 <script src="vendors/bootstrap3-wysihtml5-bower/js/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
